@@ -5,6 +5,137 @@ import { useState, useRef } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 import { ExternalLink, FolderGit2 } from "lucide-react"
 
+// Path2Zero Browser Mockup Component
+function Path2ZeroBrowserMockup() {
+  return (
+    <div className="w-full h-full rounded-lg overflow-hidden bg-[#0a1a0f] border border-[#1a3a1f]">
+      {/* Browser Chrome */}
+      <div className="bg-[#1a1a2e] px-4 py-2 flex items-center justify-between border-b border-[#2a2a4e]">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div className="text-[#7986a8] text-xs font-mono flex-1 text-center ml-4">path2zero.vercel.app</div>
+      </div>
+
+      {/* Content Area */}
+      <div className="p-8 flex flex-col items-center justify-center h-64 bg-gradient-to-b from-[#0a1a0f] to-[#051010]">
+        {/* Badge */}
+        <div className="inline-block px-3 py-1 mb-6 bg-[#00c853]/10 border border-[#00c853]/30 rounded-full">
+          <span className="text-[#00c853] font-mono text-[10px]">Aligned with UN SDG 13 – Climate Action</span>
+        </div>
+
+        {/* Main Text */}
+        <div className="text-center mb-6">
+          <p className="text-[#f0f0ff] text-xl font-light">Your Journey to</p>
+          <p className="text-[#00c853] text-3xl font-bold">Carbon Neutrality</p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-4 mb-6">
+          <button className="px-4 py-2 bg-[#00c853] text-[#0a1a0f] font-mono text-xs rounded hover:bg-[#00e676] transition-colors">
+            Calculate My Footprint →
+          </button>
+          <button className="px-4 py-2 border border-[#00c853]/50 text-[#00c853] font-mono text-xs rounded hover:border-[#00c853] transition-colors">
+            Explore Offset Projects
+          </button>
+        </div>
+
+        {/* Bottom Row */}
+        <div className="flex gap-6 text-[#7986a8] text-[10px] font-mono">
+          <span>Verified Credits</span>
+          <span>Real-time Trading</span>
+          <span>Climate Impact</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// SentrySense Dashboard SVG Component
+function SentrySenseDashboard() {
+  return (
+    <svg viewBox="0 0 400 300" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="threatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#e91e8c" stopOpacity="0.3"/>
+          <stop offset="50%" stopColor="#a855f7" stopOpacity="0.5"/>
+          <stop offset="100%" stopColor="#e91e8c" stopOpacity="0.3"/>
+        </linearGradient>
+      </defs>
+
+      {/* Background */}
+      <rect width="400" height="300" fill="#0a0a1a"/>
+
+      {/* Grid Background */}
+      <g stroke="#a855f7" strokeOpacity="0.05" strokeWidth="1">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="300"/>
+        ))}
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="400" y2={i * 50}/>
+        ))}
+      </g>
+
+      {/* Central Network Graph */}
+      {/* Nodes */}
+      <circle cx="100" cy="80" r="6" fill="#a855f7" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="200" cy="60" r="6" fill="#e91e8c" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="300" cy="100" r="6" fill="#a855f7" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="150" cy="150" r="6" fill="#a855f7" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="250" cy="150" r="6" fill="#e91e8c" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="100" cy="200" r="6" fill="#a855f7" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="200" cy="220" r="6" fill="#e91e8c" filter="url(#glow)" opacity="0.8"/>
+      <circle cx="300" cy="200" r="6" fill="#a855f7" filter="url(#glow)" opacity="0.8"/>
+
+      {/* Connection Lines */}
+      <line x1="100" y1="80" x2="200" y2="60" stroke="#a855f7" strokeWidth="1" opacity="0.4"/>
+      <line x1="200" y1="60" x2="300" y2="100" stroke="#e91e8c" strokeWidth="1" opacity="0.4"/>
+      <line x1="300" y1="100" x2="250" y2="150" stroke="#a855f7" strokeWidth="1" opacity="0.4"/>
+      <line x1="250" y1="150" x2="200" y2="220" stroke="#e91e8c" strokeWidth="1" opacity="0.4"/>
+      <line x1="200" y1="220" x2="100" y2="200" stroke="#a855f7" strokeWidth="1" opacity="0.4"/>
+      <line x1="100" y1="200" x2="150" y2="150" stroke="#e91e8c" strokeWidth="1" opacity="0.4"/>
+      <line x1="100" y1="80" x2="150" y2="150" stroke="#a855f7" strokeWidth="1" opacity="0.3"/>
+      <line x1="300" y1="100" x2="250" y2="150" stroke="#a855f7" strokeWidth="1" opacity="0.3"/>
+
+      {/* Metric Cards */}
+      {/* Top Left */}
+      <rect x="10" y="10" width="80" height="50" fill="#e91e8c" fillOpacity="0.1" stroke="#e91e8c" strokeWidth="1" rx="4"/>
+      <text x="15" y="28" fontSize="10" fill="#e91e8c" fontFamily="monospace">Threats</text>
+      <text x="15" y="42" fontSize="12" fill="#f0f0ff" fontFamily="monospace" fontWeight="bold">24</text>
+
+      {/* Top Right */}
+      <rect x="310" y="10" width="80" height="50" fill="#a855f7" fillOpacity="0.1" stroke="#a855f7" strokeWidth="1" rx="4"/>
+      <text x="315" y="28" fontSize="10" fill="#a855f7" fontFamily="monospace">Risk Score</text>
+      <text x="315" y="42" fontSize="12" fill="#f0f0ff" fontFamily="monospace" fontWeight="bold">87</text>
+
+      {/* Bottom */}
+      <rect x="160" y="255" width="80" height="35" fill="#e91e8c" fillOpacity="0.1" stroke="#e91e8c" strokeWidth="1" rx="4"/>
+      <text x="165" y="268" fontSize="10" fill="#e91e8c" fontFamily="monospace">Anomalies</text>
+      <text x="165" y="282" fontSize="12" fill="#f0f0ff" fontFamily="monospace" fontWeight="bold">3</text>
+
+      {/* Threat Timeline at Bottom */}
+      <rect x="20" y="270" width="360" height="15" fill="#0a0a1a" stroke="#a855f7" strokeOpacity="0.2" strokeWidth="1" rx="2"/>
+      <rect x="30" y="272" width="30" height="11" fill="#e91e8c" opacity="0.6"/>
+      <rect x="70" y="272" width="25" height="11" fill="#a855f7" opacity="0.5"/>
+      <rect x="105" y="272" width="35" height="11" fill="#e91e8c" opacity="0.6"/>
+      <rect x="150" y="272" width="20" height="11" fill="#a855f7" opacity="0.4"/>
+      <rect x="180" y="272" width="40" height="11" fill="#e91e8c" opacity="0.7"/>
+      <rect x="230" y="272" width="25" height="11" fill="#a855f7" opacity="0.5"/>
+      <rect x="265" y="272" width="35" height="11" fill="#e91e8c" opacity="0.6"/>
+      <rect x="310" y="272" width="20" height="11" fill="#a855f7" opacity="0.4"/>
+    </svg>
+  )
+}
+
 const projects = [
   {
     title: "Path2Zero — Carbon Credit Marketplace",
@@ -102,12 +233,7 @@ export function Works() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Image */}
               <div className="relative h-64 lg:h-80 rounded-lg overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  style={{ filter: "saturate(0.8) contrast(1.1)" }}
-                />
+                <Path2ZeroBrowserMockup />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06080f]/80 to-transparent" />
                 <div className="absolute inset-0 bg-[#e91e8c]/10 mix-blend-overlay" />
               </div>
@@ -188,12 +314,16 @@ export function Works() {
           >
             {/* Image */}
             <div className="relative h-40 rounded-lg overflow-hidden mb-4">
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                style={{ filter: "saturate(0.8) contrast(1.1)" }}
-              />
+              {project.title.includes("SentrySense") ? (
+                <SentrySenseDashboard />
+              ) : (
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  style={{ filter: "saturate(0.8) contrast(1.1)" }}
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent" />
               <div className={`absolute inset-0 mix-blend-overlay ${project.accent === "pink" ? "bg-[#e91e8c]/10" : "bg-[#a855f7]/10"}`} />
             </div>
@@ -256,15 +386,19 @@ export function Works() {
       >
         {hoveredIndex !== null && (
           <>
-            <motion.img
-              src={projects.filter(p => !p.featured)[hoveredIndex]?.image}
-              alt=""
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.2 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.4 }}
-              style={{ filter: "saturate(0.8) contrast(1.1)" }}
-            />
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("SentrySense") ? (
+              <SentrySenseDashboard />
+            ) : (
+              <motion.img
+                src={projects.filter(p => !p.featured)[hoveredIndex]?.image}
+                alt=""
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.4 }}
+                style={{ filter: "saturate(0.8) contrast(1.1)" }}
+              />
+            )}
             <div className="absolute inset-0 bg-[#e91e8c]/20 mix-blend-overlay" />
           </>
         )}
