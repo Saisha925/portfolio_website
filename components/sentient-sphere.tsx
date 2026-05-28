@@ -92,12 +92,23 @@ function Sphere() {
     
     void main() {
       float intensity = 0.3 + vDisplacement * 2.0;
-      vec3 color = vec3(intensity);
       
+      // Pink to purple gradient based on UV and displacement
+      vec3 pink = vec3(0.914, 0.118, 0.549); // #e91e8c
+      vec3 purple = vec3(0.659, 0.333, 0.969); // #a855f7
+      
+      // Mix colors based on position and displacement
+      float mixFactor = vUv.y + vDisplacement * 0.5;
+      vec3 color = mix(pink, purple, mixFactor);
+      
+      // Add intensity variation
+      color *= intensity * 1.5 + 0.5;
+      
+      // Grid lines
       float line = smoothstep(0.0, 0.02, abs(fract(vUv.x * 20.0) - 0.5));
       line *= smoothstep(0.0, 0.02, abs(fract(vUv.y * 20.0) - 0.5));
       
-      gl_FragColor = vec4(color * (1.0 - line * 0.5), 0.6);
+      gl_FragColor = vec4(color * (1.0 - line * 0.3), 0.7);
     }
   `
 
@@ -139,7 +150,7 @@ export function SentientSphere() {
   if (!mounted) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-64 h-64 rounded-full border border-white/10 animate-pulse" />
+        <div className="w-64 h-64 rounded-full border border-[#e91e8c]/20 animate-pulse" />
       </div>
     )
   }

@@ -48,20 +48,20 @@ export function CustomCursor() {
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Main cursor dot - pink accent */}
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-3 h-3 bg-[#e91e8c] rounded-full pointer-events-none z-[10000]"
         animate={{
           x: position.x - 6,
           y: position.y - 6,
-          scale: isHovering ? 0 : 5,
+          scale: isHovering ? 0 : 1,
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
       />
-      {/* Hover ring */}
+      {/* Hover ring - purple accent */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 border border-white rounded-full pointer-events-none z-[10000] mix-blend-difference"
+        className="fixed top-0 left-0 w-12 h-12 border border-[#a855f7] rounded-full pointer-events-none z-[10000]"
         animate={{
           x: position.x - 24,
           y: position.y - 24,
@@ -69,6 +69,20 @@ export function CustomCursor() {
           opacity: isVisible ? 1 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.8 }}
+      />
+      {/* Glow effect on hover */}
+      <motion.div
+        className="fixed top-0 left-0 w-16 h-16 rounded-full pointer-events-none z-[9999]"
+        style={{
+          background: "radial-gradient(circle, rgba(233, 30, 140, 0.3) 0%, transparent 70%)",
+        }}
+        animate={{
+          x: position.x - 32,
+          y: position.y - 32,
+          scale: isHovering ? 1.5 : 0,
+          opacity: isVisible && isHovering ? 1 : 0,
+        }}
+        transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.8 }}
       />
     </>
   )

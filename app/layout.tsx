@@ -15,13 +15,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "AI-Native Product Builder | Portfolio",
-  description: "System Architect & Interface Designer crafting intelligent digital experiences",
-    generator: 'v0.app'
+  title: "Saisha Bhasin | AI/ML Engineer & Researcher",
+  description: "B.Tech AI/ML student at IGDTUW building intelligent systems — from physiological deepfake detection to full-stack AI marketplaces.",
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {
-  themeColor: "#1a1a1a",
+  themeColor: "#06080f",
 }
 
 export default function RootLayout({
@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased overflow-x-hidden">
+    <html lang="en" className={`${playfair.variable} ${geistMono.variable} bg-[#06080f]`}>
+      <body className="font-sans antialiased overflow-x-hidden bg-[#06080f]">
         <div className="noise-overlay" />
         {children}
         <Analytics />
