@@ -1,0 +1,61 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#06080f"/>
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="smallGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#a855f7" stroke-width="0.5" opacity="0.1"/>
+    </pattern>
+    <linearGradient id="carbonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style={{stopColor: '#22c55e', stopOpacity: 0.8}} />
+      <stop offset="100%" style={{stopColor: '#e91e8c', stopOpacity: 0.6}} />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#smallGrid)"/>
+  
+  <!-- Left side: CO2 Graph -->
+  <g opacity="0.9">
+    <!-- Y-axis -->
+    <line x1="80" y1="50" x2="80" y2="300" stroke="#7986a8" stroke-width="2"/>
+    <!-- X-axis -->
+    <line x1="80" y1="300" x2="380" y2="300" stroke="#7986a8" stroke-width="2"/>
+    
+    <!-- CO2 bars with gradient -->
+    <rect x="110" y="200" width="35" height="100" fill="#22c55e" opacity="0.7"/>
+    <rect x="165" y="150" width="35" height="150" fill="#22c55e" opacity="0.8"/>
+    <rect x="220" y="100" width="35" height="200" fill="#22c55e" opacity="0.9"/>
+    <rect x="275" y="80" width="35" height="220" fill="url(#carbonGradient)"/>
+    <rect x="330" y="120" width="35" height="180" fill="#e91e8c" opacity="0.6"/>
+    
+    <!-- Grid lines -->
+    <line x1="75" y1="120" x2="360" y2="120" stroke="#7986a8" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+    <line x1="75" y1="180" x2="360" y2="180" stroke="#7986a8" stroke-width="1" opacity="0.2" stroke-dasharray="4"/>
+  </g>
+  
+  <!-- Right side: ESG Metrics -->
+  <g transform="translate(420, 80)">
+    <!-- Circular metrics -->
+    <circle cx="80" cy="80" r="60" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.6"/>
+    <circle cx="80" cy="80" r="45" fill="none" stroke="#22c55e" stroke-width="2" opacity="0.4"/>
+    <text x="80" y="90" text-anchor="middle" fill="#22c55e" font-size="24" font-weight="bold">ESG</text>
+    
+    <!-- Data points -->
+    <circle cx="20" cy="140" r="8" fill="#a855f7" opacity="0.8"/>
+    <line x1="30" y1="140" x2="70" y2="140" stroke="#a855f7" stroke-width="2" opacity="0.5"/>
+    <text x="80" y="145" fill="#7986a8" font-size="12">Carbon Tracking</text>
+    
+    <circle cx="20" cy="170" r="8" fill="#e91e8c" opacity="0.8"/>
+    <line x1="30" y1="170" x2="70" y2="170" stroke="#e91e8c" stroke-width="2" opacity="0.5"/>
+    <text x="80" y="175" fill="#7986a8" font-size="12">Verified Credits</text>
+    
+    <circle cx="20" cy="200" r="8" fill="#22c55e" opacity="0.8"/>
+    <line x1="30" y1="200" x2="70" y2="200" stroke="#22c55e" stroke-width="2" opacity="0.5"/>
+    <text x="80" y="205" fill="#7986a8" font-size="12">Impact Score</text>
+  </g>
+  
+  <!-- Flowing data lines -->
+  <path d="M 100 50 Q 200 80 300 100 Q 400 120 500 90" stroke="#e91e8c" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="8,4"/>
+  <path d="M 150 300 Q 250 280 350 260 Q 450 240 550 270" stroke="#22c55e" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="8,4"/>
+</svg>

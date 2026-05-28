@@ -5,6 +5,13 @@ import { Briefcase, Calendar } from "lucide-react"
 
 const experiences = [
   {
+    period: "Apr 15 — Jul 15, 2026",
+    title: "AI/ML Intern",
+    company: "HCL Technologies",
+    description: "Details to be updated upon completion.",
+    status: "Ongoing",
+  },
+  {
     period: "Jun — Aug 2025",
     title: "AI-Powered Full-Stack Development Internship",
     company: "IGDTUW",
@@ -67,6 +74,17 @@ export function Experience() {
 
                 {/* Title */}
                 <h3 className="font-sans text-lg font-medium text-[#f0f0ff] mb-2">{exp.title}</h3>
+
+                {/* Status Pill (if ongoing) */}
+                {exp.status && (
+                  <div className={`inline-block px-3 py-1 rounded-full font-mono text-xs mb-3 ${
+                    exp.status === "Ongoing" 
+                      ? "bg-[#e91e8c]/20 text-[#e91e8c] border border-[#e91e8c]/40" 
+                      : "bg-[#a855f7]/20 text-[#a855f7] border border-[#a855f7]/40"
+                  }`}>
+                    {exp.status}
+                  </div>
+                )}
 
                 {/* Company */}
                 <div className={`flex items-center gap-2 mb-3 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>

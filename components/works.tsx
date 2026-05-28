@@ -7,25 +7,25 @@ import { ExternalLink, FolderGit2 } from "lucide-react"
 
 const projects = [
   {
-    title: "Deepfake Detection via rPPG Signals & XceptionNet",
-    tags: ["Research", "Computer Vision", "2026"],
-    stack: ["XceptionNet", "rPPG", "MediaPipe", "FaceForensics++", "CelebDF-v2", "PyTorch", "timm"],
-    description: "Detects deepfake videos using physiological blood-flow signals rather than visual artifacts. Facial videos are processed via MediaPipe FaceMesh to extract G-PPG and C-PPG signals from cheek ROIs, converted into 224x224 three-channel spatial maps, and classified using two models — a baseline CNN (59% accuracy, AUC 0.62) vs fine-tuned XceptionNet (65% accuracy, AUC 0.73) — empirically validating transfer learning for physiological deepfake detection across 22,348 PPG maps from two datasets.",
-    image: "/abstract-neural-network-visualization-dark-theme.jpg",
-    links: [
-      { label: "Read Paper", url: "#" },
-      { label: "View Code", url: "https://drive.google.com/drive/folders/1j8N-qGm8mM475haK_ocWmF_4qPaJp1He" }
-    ],
-    accent: "pink",
-    featured: true,
-  },
-  {
     title: "Path2Zero — Carbon Credit Marketplace",
     tags: ["Full Stack", "AI", "Feb 2026"],
     stack: ["AI Agents", "Payment Gateway", "ESG Reports", "Chatbot"],
     description: "Carbon credit marketplace with verified certificate authentication, AI chatbot, automated ESG report generation, carbon footprint calculator, and end-to-end secure payment gateway.",
-    image: "/futuristic-data-dashboard-dark-minimal.jpg",
+    image: "/path2zero-dashboard.svg",
     links: [],
+    accent: "pink",
+    featured: true,
+  },
+  {
+    title: "Deepfake Detection via rPPG Signals & XceptionNet",
+    tags: ["Research", "Computer Vision", "2026"],
+    stack: ["XceptionNet", "rPPG", "MediaPipe", "FaceForensics++", "CelebDF-v2", "PyTorch", "timm"],
+    description: "Detects deepfake videos using physiological blood-flow signals rather than visual artifacts. Facial videos are processed via MediaPipe FaceMesh to extract G-PPG and C-PPG signals from cheek ROIs, converted into 224x224 three-channel spatial maps, and classified using two models — a baseline CNN (59% accuracy, AUC 0.62) vs fine-tuned XceptionNet (65% accuracy, AUC 0.73) — empirically validating transfer learning for physiological deepfake detection across 22,348 PPG maps from two datasets.",
+    image: "/deepfake-detection.svg",
+    links: [
+      { label: "Read Paper", url: "#" },
+      { label: "View Code", url: "https://drive.google.com/drive/folders/1j8N-qGm8mM475haK_ocWmF_4qPaJp1He" }
+    ],
     accent: "purple",
     featured: false,
   },
@@ -34,7 +34,7 @@ const projects = [
     tags: ["AI", "Streamlit", "Jul 2025"],
     stack: ["Streamlit", "Python", "Real-time AI", "Anomaly Detection"],
     description: "AI-powered cybersecurity dashboard with real-time threat visualisation, dynamic risk scores, anomaly flags, and intelligent response suggestions for enterprise-level decision-making.",
-    image: "/abstract-memory-storage-visualization.jpg",
+    image: "/sentrysense-dashboard.svg",
     links: [],
     accent: "pink",
     featured: false,
@@ -44,7 +44,7 @@ const projects = [
     tags: ["ML", "NLP", "Aug 2024"],
     stack: ["NLP", "Scikit-learn", "Feature Extraction", "Supervised Learning"],
     description: "ML model using NLP and supervised learning to detect and classify phishing emails with high accuracy through feature extraction and text-based classification.",
-    image: "/sound-wave-visualization-dark-theme.jpg",
+    image: "/phishing-detector.svg",
     links: [],
     accent: "purple",
     featured: false,

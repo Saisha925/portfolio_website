@@ -5,10 +5,15 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { GraduationCap, Award } from "lucide-react"
 
 const academicFoundations = [
-  "Neural Networks",
+  "Python",
+  "C++",
+  "Artificial Intelligence",
+  "Data Science",
+  "Machine Learning",
   "Deep Learning",
-  "NLP",
+  "Neural Networks",
   "Computer Vision",
+  "NLP",
   "Reinforcement Learning",
   "DSA",
   "DBMS",
