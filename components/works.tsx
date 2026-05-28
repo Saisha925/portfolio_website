@@ -143,7 +143,9 @@ const projects = [
     stack: ["AI Agents", "Payment Gateway", "ESG Reports", "Chatbot"],
     description: "Carbon credit marketplace with verified certificate authentication, AI chatbot, automated ESG report generation, carbon footprint calculator, and end-to-end secure payment gateway.",
     image: "/path2zero-dashboard.svg",
-    links: [],
+    links: [
+      { label: "Visit Live Site", url: "https://path2zero.vercel.app/" }
+    ],
     accent: "pink",
     featured: true,
   },
@@ -232,11 +234,24 @@ export function Works() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Image */}
-              <div className="relative h-64 lg:h-80 rounded-lg overflow-hidden">
+              <a 
+                href="https://path2zero.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative h-64 lg:h-80 rounded-lg overflow-hidden cursor-pointer"
+              >
                 <Path2ZeroBrowserMockup />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06080f]/80 to-transparent" />
                 <div className="absolute inset-0 bg-[#e91e8c]/10 mix-blend-overlay" />
-              </div>
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-[#e91e8c] text-[#06080f] font-mono text-sm font-semibold rounded-lg">
+                    <span>↗</span>
+                    <span>Visit Live Site</span>
+                  </div>
+                </div>
+              </a>
 
               {/* Content */}
               <div className="flex flex-col justify-center">
