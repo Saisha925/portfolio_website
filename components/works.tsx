@@ -144,7 +144,7 @@ const projects = [
     description: "Carbon credit marketplace with verified certificate authentication, AI chatbot, automated ESG report generation, carbon footprint calculator, and end-to-end secure payment gateway.",
     image: "/path2zero-dashboard.svg",
     links: [
-      { label: "Visit Live Site", url: "https://path2zero.vercel.app/" }
+      { label: "View Project", url: "https://path2zero.vercel.app/" }
     ],
     accent: "pink",
     featured: true,
@@ -156,6 +156,7 @@ const projects = [
     description: "Detects deepfake videos using physiological blood-flow signals rather than visual artifacts. Facial videos are processed via MediaPipe FaceMesh to extract G-PPG and C-PPG signals from cheek ROIs, converted into 224x224 three-channel spatial maps, and classified using two models — a baseline CNN (59% accuracy, AUC 0.62) vs fine-tuned XceptionNet (65% accuracy, AUC 0.73) — empirically validating transfer learning for physiological deepfake detection across 22,348 PPG maps from two datasets.",
     image: "/deepfake-detection.svg",
     links: [
+      { label: "View Project", url: "#" },
       { label: "Read Paper", url: "#" },
       { label: "View Code", url: "https://drive.google.com/drive/folders/1j8N-qGm8mM475haK_ocWmF_4qPaJp1He" }
     ],
@@ -168,7 +169,9 @@ const projects = [
     stack: ["Streamlit", "Python", "Real-time AI", "Anomaly Detection"],
     description: "AI-powered cybersecurity dashboard with real-time threat visualisation, dynamic risk scores, anomaly flags, and intelligent response suggestions for enterprise-level decision-making.",
     image: "/sentrysense-dashboard.svg",
-    links: [],
+    links: [
+      { label: "View Project", url: "#" }
+    ],
     accent: "pink",
     featured: false,
   },
@@ -178,7 +181,9 @@ const projects = [
     stack: ["NLP", "Scikit-learn", "Feature Extraction", "Supervised Learning"],
     description: "ML model using NLP and supervised learning to detect and classify phishing emails with high accuracy through feature extraction and text-based classification.",
     image: "/phishing-detector.svg",
-    links: [],
+    links: [
+      { label: "View Project", url: "#" }
+    ],
     accent: "purple",
     featured: false,
   },
@@ -248,7 +253,7 @@ export function Works() {
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex items-center gap-2 px-4 py-2 bg-[#e91e8c] text-[#06080f] font-mono text-sm font-semibold rounded-lg">
                     <span>↗</span>
-                    <span>Visit Live Site</span>
+                    <span>View Project</span>
                   </div>
                 </div>
               </a>
@@ -377,9 +382,33 @@ export function Works() {
             </div>
 
             {/* Description */}
-            <p className="text-[#7986a8] text-xs leading-relaxed line-clamp-3">
+            <p className="text-[#7986a8] text-xs leading-relaxed line-clamp-3 mb-4">
               {project.description}
             </p>
+
+            {/* Links */}
+            <div className="flex gap-4 mt-auto">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  target={link.url === "#" ? undefined : "_blank"}
+                  rel={link.url === "#" ? undefined : "noopener noreferrer"}
+                  className={`inline-flex items-center gap-1 font-mono text-[10px] transition-colors duration-300 ${
+                    project.accent === "pink"
+                      ? "text-[#e91e8c] hover:text-[#f0f0ff]"
+                      : "text-[#a855f7] hover:text-[#f0f0ff]"
+                  }`}
+                >
+                  {link.label.includes("Code") ? (
+                    <FolderGit2 className="w-3.5 h-3.5" />
+                  ) : (
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  )}
+                  {link.label}
+                </a>
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>

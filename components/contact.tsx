@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Mail, Send, Github, Linkedin } from "lucide-react"
+import { Mail, Send, Github, Linkedin, Loader2, CheckCircle2, AlertCircle } from "lucide-react"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -10,11 +10,39 @@ export function Contact() {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log(formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    setErrorMessage(null)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.")
+      }
+
+      setSubmitStatus("success")
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error: any) {
+      setSubmitStatus("error")
+      setErrorMessage(error.message || "Failed to send message.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -59,9 +87,7 @@ export function Contact() {
               <p className="font-mono text-xs text-[#7986a8] mb-4">CONNECT</p>
               <div className="flex gap-4">
                 <motion.a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 border border-[#a855f7]/30 rounded-lg text-[#a855f7] hover:bg-[#a855f7]/10 hover:border-[#a855f7]/50 transition-all duration-300"
@@ -69,9 +95,7 @@ export function Contact() {
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
                 <motion.a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 border border-[#a855f7]/30 rounded-lg text-[#a855f7] hover:bg-[#a855f7]/10 hover:border-[#a855f7]/50 transition-all duration-300"
@@ -139,15 +163,50 @@ export function Contact() {
               />
             </div>
 
+            {/* Status Messages */}
+            {submitStatus === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-3 p-4 bg-[#0a1a0f]/50 border border-[#00c853]/30 rounded-lg text-[#00c853] font-mono text-xs"
+              >
+                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <span>Message sent! I'll get back to you soon.</span>
+              </motion.div>
+            )}
+
+            {submitStatus === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-3 p-4 bg-[#1a0a0f]/50 border border-red-500/30 rounded-lg text-red-500 font-mono text-xs"
+              >
+                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                <span>{errorMessage}</span>
+              </motion.div>
+            )}
+
             {/* Submit Button */}
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-6 py-4 bg-[#e91e8c] text-[#06080f] font-mono text-sm tracking-wider rounded-lg hover:bg-[#e91e8c]/90 transition-all duration-300 flex items-center justify-center gap-2 glow-pink"
+              disabled={isSubmitting}
+              whileHover={isSubmitting ? {} : { scale: 1.02 }}
+              whileTap={isSubmitting ? {} : { scale: 0.98 }}
+              className={`w-full px-6 py-4 bg-[#e91e8c] text-[#06080f] font-mono text-sm tracking-wider rounded-lg transition-all duration-300 flex items-center justify-center gap-2 glow-pink ${
+                isSubmitting ? "opacity-75 cursor-not-allowed bg-[#e91e8c]/75" : "hover:bg-[#e91e8c]/90"
+              }`}
             >
-              <Send className="w-4 h-4" />
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4" />
+                  Send Message
+                </>
+              )}
             </motion.button>
           </motion.form>
         </div>

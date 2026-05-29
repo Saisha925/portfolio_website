@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { SentientSphere } from "./sentient-sphere"
 import { Download } from "lucide-react"
+import { useLenis } from "lenis/react"
 
 const roles = [
   "AI/ML Engineer",
@@ -18,6 +19,7 @@ export function Hero() {
   const containerRef = useRef<HTMLElement>(null)
   const [currentRole, setCurrentRole] = useState(0)
   const [displayText, setDisplayText] = useState("")
+  const lenis = useLenis()
   const [isDeleting, setIsDeleting] = useState(false)
 
   const { scrollYProgress } = useScroll({
@@ -130,6 +132,14 @@ export function Hero() {
           >
             <motion.a
               href="#works"
+              onClick={(e) => {
+                e.preventDefault()
+                if (lenis) {
+                  lenis.scrollTo("#works")
+                } else {
+                  document.querySelector("#works")?.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
               data-cursor-hover
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -139,6 +149,9 @@ export function Hero() {
             </motion.a>
             <motion.a
               href="#"
+              onClick={(e) => {
+                e.preventDefault()
+              }}
               data-cursor-hover
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
