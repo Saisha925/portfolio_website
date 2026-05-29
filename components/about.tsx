@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { motion } from "framer-motion"
 import { GraduationCap, Award } from "lucide-react"
 
 const academicFoundations = [
@@ -22,13 +22,6 @@ const academicFoundations = [
 
 export function About() {
   const containerRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"])
-  const smoothX = useSpring(x, { stiffness: 100, damping: 30 })
 
   return (
     <section id="about" ref={containerRef} className="relative py-24 md:py-32 overflow-hidden bg-[#06080f]">
@@ -113,7 +106,7 @@ export function About() {
         </div>
       </div>
 
-      {/* Academic Foundations - Horizontal Scroll */}
+      {/* Academic Foundations - Static List */}
       <div className="mb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -125,17 +118,19 @@ export function About() {
           <p className="font-mono text-xs tracking-[0.3em] text-[#7986a8]">ACADEMIC FOUNDATIONS</p>
         </motion.div>
 
-        <div className="relative overflow-hidden py-4">
-          <motion.div style={{ x: smoothX }} className="flex gap-4 px-8 md:px-12 whitespace-nowrap">
-            {[...academicFoundations, ...academicFoundations, ...academicFoundations].map((item, index) => (
-              <motion.span
-                key={index}
-                className="px-6 py-3 border border-[#e91e8c]/30 rounded-full font-mono text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default"
-              >
-                {item}
-              </motion.span>
-            ))}
-          </motion.div>
+        <div className="px-8 md:px-12 flex flex-wrap gap-3 max-w-4xl">
+          {academicFoundations.map((item, index) => (
+            <motion.span
+              key={item}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.03 }}
+              className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default"
+            >
+              {item}
+            </motion.span>
+          ))}
         </div>
       </div>
 

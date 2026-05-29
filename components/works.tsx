@@ -136,6 +136,172 @@ function SentrySenseDashboard() {
   )
 }
 
+// Deepfake Detection SVG Component
+function DeepfakeDetectionIllustration() {
+  return (
+    <svg viewBox="0 0 400 300" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-deepfake">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="ppgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#e91e8c" />
+          <stop offset="50%" stopColor="#a855f7" />
+          <stop offset="100%" stopColor="#00f0ff" />
+        </linearGradient>
+      </defs>
+      
+      {/* Background */}
+      <rect width="400" height="300" fill="#0a0a1a"/>
+      
+      {/* Grid Pattern (Subtle) */}
+      <g stroke="#a855f7" strokeOpacity="0.05" strokeWidth="1">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="300"/>
+        ))}
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="400" y2={i * 50}/>
+        ))}
+      </g>
+      
+      {/* Face Mesh Outline */}
+      <path d="M 200,50 Q 130,55 130,120 Q 130,190 200,210 Q 270,190 270,120 Q 270,55 200,50" 
+            fill="none" stroke="#a855f7" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="3,3"/>
+            
+      {/* Inner mesh structure / lines */}
+      <line x1="200" y1="50" x2="200" y2="210" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      <path d="M 130,120 Q 200,140 270,120" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      <path d="M 140,160 Q 200,180 260,160" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      <path d="M 150,90 Q 200,105 250,90" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      
+      {/* Eye areas */}
+      <ellipse cx="170" cy="110" rx="15" ry="8" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      <ellipse cx="230" cy="110" rx="15" ry="8" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      
+      {/* Nose */}
+      <path d="M 200,110 L 195,145 L 205,145 Z" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      
+      {/* Mouth */}
+      <path d="M 180,170 Q 200,185 220,170 Q 200,175 180,170" fill="none" stroke="#a855f7" strokeWidth="1" strokeOpacity="0.2"/>
+      
+      {/* ROI Regions - Pink, Purple, Blue */}
+      {/* Forehead ROI - Purple */}
+      <rect x="180" y="65" width="40" height="20" rx="4" fill="#a855f7" fillOpacity="0.15" stroke="#a855f7" strokeWidth="1.5" strokeDasharray="2,2"/>
+      <circle cx="200" cy="75" r="2" fill="#a855f7"/>
+      <text x="185" y="60" fontSize="7" fill="#a855f7" fontFamily="monospace" opacity="0.8">ROI_1 (Forehead)</text>
+      
+      {/* Left Cheek ROI - Pink */}
+      <rect x="145" y="130" width="35" height="25" rx="4" fill="#e91e8c" fillOpacity="0.15" stroke="#e91e8c" strokeWidth="1.5" strokeDasharray="2,2"/>
+      <circle cx="162.5" cy="142.5" r="2" fill="#e91e8c"/>
+      <text x="110" y="145" fontSize="7" fill="#e91e8c" fontFamily="monospace" opacity="0.8">ROI_2 (Cheek_L)</text>
+      
+      {/* Right Cheek ROI - Blue */}
+      <rect x="220" y="130" width="35" height="25" rx="4" fill="#00f0ff" fillOpacity="0.15" stroke="#00f0ff" strokeWidth="1.5" strokeDasharray="2,2"/>
+      <circle cx="237.5" cy="142.5" r="2" fill="#00f0ff"/>
+      <text x="260" y="145" fontSize="7" fill="#00f0ff" fontFamily="monospace" opacity="0.8">ROI_3 (Cheek_R)</text>
+      
+      {/* PPG Signal Wave below */}
+      <path d="M 30,250 Q 55,220 80,250 T 130,250 T 180,250 T 230,250 T 280,250 T 330,250 T 370,250" 
+            fill="none" stroke="url(#ppgGrad)" strokeWidth="3" filter="url(#glow-deepfake)"/>
+      <path d="M 30,250 Q 55,220 80,250 T 130,250 T 180,250 T 230,250 T 280,250 T 330,250 T 370,250" 
+            fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.8"/>
+            
+      {/* Analysis UI Text overlays */}
+      <text x="30" y="280" fontSize="9" fill="#7986a8" fontFamily="monospace">PPG Signal Extraction: ACTIVE</text>
+      <text x="280" y="280" fontSize="9" fill="#00f0ff" fontFamily="monospace">Real-time rPPG</text>
+    </svg>
+  )
+}
+
+// Phishing Detector SVG Component
+function PhishingDetectorIllustration() {
+  return (
+    <svg viewBox="0 0 400 300" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-phishing">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#000000" floodOpacity="0.5"/>
+        </filter>
+      </defs>
+      
+      {/* Background */}
+      <rect width="400" height="300" fill="#0a0a1a"/>
+      
+      {/* Grid Background */}
+      <g stroke="#e91e8c" strokeOpacity="0.04" strokeWidth="1">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="300"/>
+        ))}
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="400" y2={i * 50}/>
+        ))}
+      </g>
+      
+      {/* Stylised Email Card */}
+      <g filter="url(#card-shadow)">
+        <rect x="50" y="40" width="300" height="200" rx="8" fill="#0f141c" stroke="#e91e8c" strokeWidth="1.5" strokeOpacity="0.3"/>
+        
+        {/* Email Header */}
+        <path d="M 50,80 L 350,80" stroke="#e91e8c" strokeWidth="1" strokeOpacity="0.2"/>
+        
+        {/* Header content */}
+        <circle cx="70" cy="60" r="10" fill="#a855f7" fillOpacity="0.2"/>
+        <path d="M 66,63 C 66,57 74,57 74,63" stroke="#a855f7" strokeWidth="1.5" fill="none"/>
+        <circle cx="70" cy="57" r="3" fill="#a855f7"/>
+        
+        <text x="90" y="58" fontSize="8" fill="#7986a8" fontFamily="monospace">FROM:</text>
+        <text x="125" y="58" fontSize="8" fill="#e91e8c" fontFamily="monospace" fontWeight="bold">alert-verify@security-update-alert.com</text>
+        
+        <text x="90" y="70" fontSize="8" fill="#7986a8" fontFamily="monospace">SUBJECT:</text>
+        <text x="140" y="70" fontSize="8" fill="#f0f0ff" fontFamily="monospace" fontWeight="bold">Immediate Action Required: Password Lockout</text>
+        
+        {/* Email Body dummy text lines */}
+        <line x1="70" y1="105" x2="330" y2="105" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+        <line x1="70" y1="120" x2="280" y2="120" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+        
+        {/* Suspicious keyword 1: "verify account" */}
+        <rect x="70" y="130" width="85" height="12" rx="2" fill="#e91e8c" fillOpacity="0.15" stroke="#e91e8c" strokeWidth="1" strokeDasharray="1,1"/>
+        <text x="73" y="139" fontSize="8" fill="#e91e8c" fontFamily="monospace" fontWeight="bold">verify account</text>
+        
+        <line x1="160" y1="136" x2="310" y2="136" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+        
+        {/* Suspicious keyword 2: "CLICK HERE" */}
+        <rect x="70" y="150" width="60" height="12" rx="2" fill="#e91e8c" fillOpacity="0.15" stroke="#e91e8c" strokeWidth="1" strokeDasharray="1,1"/>
+        <text x="73" y="159" fontSize="8" fill="#e91e8c" fontFamily="monospace" fontWeight="bold">CLICK HERE</text>
+        
+        <line x1="135" y1="156" x2="250" y2="156" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+        
+        {/* Suspicious keyword 3: "urgent bypass" */}
+        <rect x="70" y="170" width="75" height="12" rx="2" fill="#e91e8c" fillOpacity="0.15" stroke="#e91e8c" strokeWidth="1" strokeDasharray="1,1"/>
+        <text x="73" y="179" fontSize="8" fill="#e91e8c" fontFamily="monospace" fontWeight="bold">urgent bypass</text>
+        
+        <line x1="150" y1="176" x2="330" y2="176" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+        
+        <line x1="70" y1="195" x2="200" y2="195" stroke="#7986a8" strokeWidth="4" strokeOpacity="0.3" strokeLinecap="round"/>
+      </g>
+      
+      {/* "PHISHING DETECTED" Warning Banner/Stamp in Pink */}
+      <g transform="translate(140, 110) rotate(-12)" filter="url(#glow-phishing)">
+        <rect x="-10" y="-15" width="160" height="40" rx="4" fill="#0a0a1a" stroke="#e91e8c" strokeWidth="2.5" />
+        <rect x="-7" y="-12" width="154" height="34" rx="2" fill="none" stroke="#e91e8c" strokeWidth="1" strokeOpacity="0.5" />
+        <text x="70" y="10" textAnchor="middle" fontSize="13" fill="#e91e8c" fontFamily="sans-serif" fontWeight="900" letterSpacing="1">
+          PHISHING DETECTED
+        </text>
+      </g>
+    </svg>
+  )
+}
+
 const projects = [
   {
     title: "Path2Zero — Carbon Credit Marketplace",
@@ -156,8 +322,8 @@ const projects = [
     description: "Detects deepfake videos using physiological blood-flow signals rather than visual artifacts. Facial videos are processed via MediaPipe FaceMesh to extract G-PPG and C-PPG signals from cheek ROIs, converted into 224x224 three-channel spatial maps, and classified using two models — a baseline CNN (59% accuracy, AUC 0.62) vs fine-tuned XceptionNet (65% accuracy, AUC 0.73) — empirically validating transfer learning for physiological deepfake detection across 22,348 PPG maps from two datasets.",
     image: "/deepfake-detection.svg",
     links: [
-      { label: "View Project", url: "#" },
-      { label: "Read Paper", url: "#" },
+      { label: "View Project", url: "https://github.com/Saisha925/Deepfake-Detection-" },
+      { label: "Read Paper", url: "/deepfake-detection-paper.pdf" },
       { label: "View Code", url: "https://drive.google.com/drive/folders/1j8N-qGm8mM475haK_ocWmF_4qPaJp1He" }
     ],
     accent: "purple",
@@ -170,7 +336,7 @@ const projects = [
     description: "AI-powered cybersecurity dashboard with real-time threat visualisation, dynamic risk scores, anomaly flags, and intelligent response suggestions for enterprise-level decision-making.",
     image: "/sentrysense-dashboard.svg",
     links: [
-      { label: "View Project", url: "#" }
+      { label: "View Project", url: "https://github.com/Saisha925/SentrySense_2.0/tree/main" }
     ],
     accent: "pink",
     featured: false,
@@ -182,7 +348,7 @@ const projects = [
     description: "ML model using NLP and supervised learning to detect and classify phishing emails with high accuracy through feature extraction and text-based classification.",
     image: "/phishing-detector.svg",
     links: [
-      { label: "View Project", url: "#" }
+      { label: "View Project", url: "https://github.com/Saisha925/PhishingDetectionProject" }
     ],
     accent: "purple",
     featured: false,
@@ -336,6 +502,10 @@ export function Works() {
             <div className="relative h-40 rounded-lg overflow-hidden mb-4">
               {project.title.includes("SentrySense") ? (
                 <SentrySenseDashboard />
+              ) : project.title.includes("Deepfake") ? (
+                <DeepfakeDetectionIllustration />
+              ) : project.title.includes("Phishing") ? (
+                <PhishingDetectorIllustration />
               ) : (
                 <img 
                   src={project.image} 
@@ -432,6 +602,10 @@ export function Works() {
           <>
             {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("SentrySense") ? (
               <SentrySenseDashboard />
+            ) : projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Deepfake") ? (
+              <DeepfakeDetectionIllustration />
+            ) : projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Phishing") ? (
+              <PhishingDetectorIllustration />
             ) : (
               <motion.img
                 src={projects.filter(p => !p.featured)[hoveredIndex]?.image}

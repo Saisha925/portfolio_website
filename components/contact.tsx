@@ -87,7 +87,9 @@ export function Contact() {
               <p className="font-mono text-xs text-[#7986a8] mb-4">CONNECT</p>
               <div className="flex gap-4">
                 <motion.a
-                  href="#"
+                  href="https://www.linkedin.com/in/saishabhasin925"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 border border-[#a855f7]/30 rounded-lg text-[#a855f7] hover:bg-[#a855f7]/10 hover:border-[#a855f7]/50 transition-all duration-300"
@@ -95,7 +97,9 @@ export function Contact() {
                   <Linkedin className="w-5 h-5" />
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://github.com/Saisha925"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 border border-[#a855f7]/30 rounded-lg text-[#a855f7] hover:bg-[#a855f7]/10 hover:border-[#a855f7]/50 transition-all duration-300"

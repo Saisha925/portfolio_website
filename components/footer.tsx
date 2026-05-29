@@ -17,14 +17,18 @@ export function Footer() {
           {/* Social Links */}
           <div className="flex gap-4">
             <motion.a
-              href="#"
+              href="https://www.linkedin.com/in/saishabhasin925"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
               className="text-[#7986a8] hover:text-[#a855f7] transition-colors duration-300"
             >
               <Linkedin className="w-5 h-5" />
             </motion.a>
             <motion.a
-              href="#"
+              href="https://github.com/Saisha925"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
               className="text-[#7986a8] hover:text-[#a855f7] transition-colors duration-300"
             >

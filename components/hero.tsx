@@ -148,10 +148,8 @@ export function Hero() {
               View My Work
             </motion.a>
             <motion.a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault()
-              }}
+              href="/saisha-bhasin-cv.pdf"
+              download
               data-cursor-hover
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
