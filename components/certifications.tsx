@@ -95,7 +95,7 @@ export function Certifications() {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
+                  className="inline-flex items-center gap-1 px-4 py-2 border border-[#e91e8c] text-[#e91e8c] bg-[#e91e8c]/10 hover:bg-[#e91e8c]/20 hover:text-[#f0f0ff] rounded-lg font-mono text-xs font-medium transition-all duration-300 glow-pink"
                 >
                   View Badge ↗
                 </a>

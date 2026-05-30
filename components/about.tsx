@@ -119,17 +119,13 @@ export function About() {
         </motion.div>
 
         <div className="px-8 md:px-12 flex flex-wrap gap-3 max-w-4xl">
-          {academicFoundations.map((item, index) => (
-            <motion.span
+          {academicFoundations.map((item) => (
+            <span
               key={item}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.03 }}
               className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default"
             >
               {item}
-            </motion.span>
+            </span>
           ))}
         </div>
       </div>

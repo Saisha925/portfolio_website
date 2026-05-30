@@ -500,20 +500,9 @@ export function Works() {
           >
             {/* Image */}
             <div className="relative h-40 rounded-lg overflow-hidden mb-4">
-              {project.title.includes("SentrySense") ? (
-                <SentrySenseDashboard />
-              ) : project.title.includes("Deepfake") ? (
-                <DeepfakeDetectionIllustration />
-              ) : project.title.includes("Phishing") ? (
-                <PhishingDetectorIllustration />
-              ) : (
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  style={{ filter: "saturate(0.8) contrast(1.1)" }}
-                />
-              )}
+              {project.title.includes("SentrySense") && <SentrySenseDashboard />}
+              {project.title.includes("Deepfake") && <DeepfakeDetectionIllustration />}
+              {project.title.includes("Phishing") && <PhishingDetectorIllustration />}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent" />
               <div className={`absolute inset-0 mix-blend-overlay ${project.accent === "pink" ? "bg-[#e91e8c]/10" : "bg-[#a855f7]/10"}`} />
             </div>
@@ -600,22 +589,14 @@ export function Works() {
       >
         {hoveredIndex !== null && (
           <>
-            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("SentrySense") ? (
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("SentrySense") && (
               <SentrySenseDashboard />
-            ) : projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Deepfake") ? (
+            )}
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Deepfake") && (
               <DeepfakeDetectionIllustration />
-            ) : projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Phishing") ? (
+            )}
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Phishing") && (
               <PhishingDetectorIllustration />
-            ) : (
-              <motion.img
-                src={projects.filter(p => !p.featured)[hoveredIndex]?.image}
-                alt=""
-                className="w-full h-full object-cover"
-                initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.4 }}
-                style={{ filter: "saturate(0.8) contrast(1.1)" }}
-              />
             )}
             <div className="absolute inset-0 bg-[#e91e8c]/20 mix-blend-overlay" />
           </>
