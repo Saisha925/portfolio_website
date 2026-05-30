@@ -17,7 +17,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Saisha Bhasin | AI/ML Engineer & Researcher",
   description: "B.Tech AI/ML student at IGDTUW building intelligent systems — from physiological deepfake detection to full-stack AI marketplaces.",
-  generator: 'v0.app'
+  generator: 'v0.app',
+  openGraph: {
+    title: "Saisha Bhasin | AI/ML Engineer & Researcher",
+    description: "B.Tech AI/ML student at IGDTUW building intelligent systems — from physiological deepfake detection to full-stack AI marketplaces.",
+    url: "https://portfolio-website-sznt.vercel.app",
+    siteName: "Saisha Bhasin Portfolio",
+    images: [
+      {
+        url: "https://portfolio-website-sznt.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Saisha Bhasin Portfolio",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saisha Bhasin | AI/ML Engineer & Researcher",
+    description: "B.Tech AI/ML student at IGDTUW building intelligent systems.",
+    images: ["https://portfolio-website-sznt.vercel.app/og-image.png"],
+  },
 }
 
 export const viewport: Viewport = {
