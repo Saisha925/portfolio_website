@@ -90,6 +90,7 @@ export function Certifications() {
                 )}
               </span>
 
+              {/* Styled Credly Badge Button */}
               {cert.link && (
                 <a
                   href={cert.link}

@@ -545,7 +545,7 @@ export function Works() {
               {project.description}
             </p>
 
-            {/* Links */}
+            {/* Links - handles Read Paper and code repository URLs */}
             <div className="flex gap-4 mt-auto">
               {project.links.map((link) => (
                 <a

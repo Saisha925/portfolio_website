@@ -147,6 +147,7 @@ export function Hero() {
             >
               View My Work
             </motion.a>
+            {/* Download CV button - links to saisha-bhasin-cv.pdf with download attribute */}
             <motion.a
               href="/saisha-bhasin-cv.pdf"
               download

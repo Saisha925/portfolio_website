@@ -118,15 +118,22 @@ export function About() {
           <p className="font-mono text-xs tracking-[0.3em] text-[#7986a8]">ACADEMIC FOUNDATIONS</p>
         </motion.div>
 
-        <div className="px-8 md:px-12 flex flex-wrap gap-3 max-w-4xl">
-          {academicFoundations.map((item) => (
-            <span
-              key={item}
-              className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default"
-            >
-              {item}
-            </span>
-          ))}
+        <div className="px-8 md:px-12">
+          <div className="flex flex-wrap gap-2">
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Python</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">C++</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Artificial Intelligence</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Data Science</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Machine Learning</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Deep Learning</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Neural Networks</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Computer Vision</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">NLP</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">Reinforcement Learning</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">DSA</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">DBMS</span>
+            <span className="px-5 py-2.5 border border-[#e91e8c]/20 rounded-full font-mono text-xs md:text-sm text-[#f0f0ff] hover:bg-[#e91e8c]/10 hover:border-[#e91e8c]/50 transition-all duration-300 cursor-default">OOPs</span>
+          </div>
         </div>
       </div>
 
