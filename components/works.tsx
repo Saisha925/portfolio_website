@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 import { ExternalLink, FolderGit2 } from "lucide-react"
-
+import Link from "next/link"
 // Path2Zero Browser Mockup Component
 function Path2ZeroBrowserMockup() {
   return (
@@ -302,6 +302,35 @@ function PhishingDetectorIllustration() {
   )
 }
 
+// EcoTrack SVG Component
+function EcoTrackIllustration() {
+  return (
+    <svg viewBox="0 0 400 300" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow-eco">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="400" height="300" fill="#0a0a1a"/>
+      <g stroke="#e91e8c" strokeOpacity="0.05" strokeWidth="1">
+        {Array.from({ length: 9 }).map((_, i) => (
+          <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="300"/>
+        ))}
+        {Array.from({ length: 7 }).map((_, i) => (
+          <line key={`h${i}`} x1="0" y1={i * 50} x2="400" y2={i * 50}/>
+        ))}
+      </g>
+      <path d="M 50,250 Q 150,200 200,150 T 350,50" fill="none" stroke="#e91e8c" strokeWidth="3" filter="url(#glow-eco)"/>
+      <circle cx="125" cy="175" r="4" fill="#a855f7" filter="url(#glow-eco)"/>
+      <circle cx="275" cy="100" r="4" fill="#00f0ff" filter="url(#glow-eco)"/>
+    </svg>
+  )
+}
+
 const projects = [
   {
     title: "Path2Zero — Carbon Credit Marketplace",
@@ -314,6 +343,7 @@ const projects = [
     ],
     accent: "pink",
     featured: true,
+    href: "/projects/path2zero"
   },
   {
     title: "Deepfake Detection via rPPG Signals & XceptionNet",
@@ -328,6 +358,7 @@ const projects = [
     ],
     accent: "purple",
     featured: false,
+    href: "/projects/deepfake-detection"
   },
   {
     title: "SentrySense — Cybersecurity Threat Dashboard",
@@ -340,6 +371,21 @@ const projects = [
     ],
     accent: "pink",
     featured: false,
+    href: "/projects/sentrysense"
+  },
+  {
+    title: "EcoTrack: AI-Powered Carbon Footprint Estimation",
+    tags: ["ML", "Full Stack", "Apr 2025"],
+    stack: ["Python", "Streamlit", "Next.js", "Machine Learning"],
+    description: "A solo ML-powered web app helping businesses estimate, visualise, and reduce their daily carbon footprint.",
+    image: "/ecotrack.svg",
+    links: [
+      { label: "View Live Site", url: "https://carbon-footprint-estimation.vercel.app/" },
+      { label: "GitHub", url: "https://github.com/Saisha925/CarbonFootprintEstimation" }
+    ],
+    accent: "pink",
+    featured: false,
+    href: "/projects/ecotrack"
   },
   {
     title: "Phishing Email Detector",
@@ -352,6 +398,7 @@ const projects = [
     ],
     accent: "purple",
     featured: false,
+    href: "/projects/phishing-detector"
   },
 ]
 
@@ -397,35 +444,32 @@ export function Works() {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <div className="relative p-8 bg-[#0d1117] border border-[#e91e8c]/30 rounded-2xl overflow-hidden group hover:border-[#e91e8c]/50 transition-all duration-500 glow-pink">
+          <Link href={project.href!} className="block relative p-8 bg-[#0d1117] border border-[#e91e8c]/30 rounded-2xl overflow-hidden group hover:border-[#e91e8c] hover:shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-all duration-500 glow-pink">
             {/* Featured Badge */}
-            <div className="absolute top-4 right-4 px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-xs rounded-full">
+            <div className="absolute top-4 right-4 px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-xs rounded-full z-10">
               Featured
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Image */}
-              <a 
-                href="https://path2zero.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group relative h-64 lg:h-80 rounded-lg overflow-hidden cursor-pointer"
+              <div 
+                className="group/img relative h-64 lg:h-80 rounded-lg overflow-hidden cursor-pointer"
               >
                 <Path2ZeroBrowserMockup />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06080f]/80 to-transparent" />
                 <div className="absolute inset-0 bg-[#e91e8c]/10 mix-blend-overlay" />
                 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
                   <div className="flex items-center gap-2 px-4 py-2 bg-[#e91e8c] text-[#06080f] font-mono text-sm font-semibold rounded-lg">
                     <span>↗</span>
                     <span>View Project</span>
                   </div>
                 </div>
-              </a>
+              </div>
 
               {/* Content */}
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center relative z-10">
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
@@ -468,6 +512,7 @@ export function Works() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-2 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
                     >
                       {link.label.includes("Code") ? <FolderGit2 className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
@@ -477,7 +522,9 @@ export function Works() {
                 </div>
               </div>
             </div>
-          </div>
+            {/* View Details Label */}
+            <div className="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] text-[#e91e8c]">View Details →</div>
+          </Link>
         </motion.div>
       ))}
 
@@ -492,17 +539,18 @@ export function Works() {
             transition={{ duration: 0.8, delay: index * 0.1 }}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className={`relative p-6 bg-[#0d1117] border rounded-xl overflow-hidden group transition-all duration-500 ${
-              project.accent === "pink" 
-                ? "border-[#e91e8c]/20 hover:border-[#e91e8c]/50 border-glow-pink" 
-                : "border-[#a855f7]/20 hover:border-[#a855f7]/50 border-glow-purple"
-            }`}
           >
+            <Link href={project.href!} className={`block h-full relative p-6 bg-[#0d1117] border rounded-xl overflow-hidden group transition-all duration-500 flex flex-col ${
+              project.accent === "pink" 
+                ? "border-[#e91e8c]/20 hover:border-[#e91e8c] hover:shadow-[0_0_15px_rgba(233,30,140,0.3)] border-glow-pink" 
+                : "border-[#a855f7]/20 hover:border-[#a855f7] hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] border-glow-purple"
+            }`}>
             {/* Image */}
-            <div className="relative h-40 rounded-lg overflow-hidden mb-4">
+            <div className="relative h-40 rounded-lg overflow-hidden mb-4 shrink-0">
               {project.title.includes("SentrySense") && <SentrySenseDashboard />}
               {project.title.includes("Deepfake") && <DeepfakeDetectionIllustration />}
               {project.title.includes("Phishing") && <PhishingDetectorIllustration />}
+              {project.title.includes("EcoTrack") && <EcoTrackIllustration />}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent" />
               <div className={`absolute inset-0 mix-blend-overlay ${project.accent === "pink" ? "bg-[#e91e8c]/10" : "bg-[#a855f7]/10"}`} />
             </div>
@@ -524,12 +572,12 @@ export function Works() {
             </div>
 
             {/* Title */}
-            <h3 className="font-sans text-lg font-medium text-[#f0f0ff] mb-2 leading-tight">
+            <h3 className="font-sans text-lg font-medium text-[#f0f0ff] mb-2 leading-tight relative z-10">
               {project.title}
             </h3>
 
             {/* Stack */}
-            <div className="flex flex-wrap gap-1 mb-3">
+            <div className="flex flex-wrap gap-1 mb-3 relative z-10">
               {project.stack.slice(0, 4).map((tech) => (
                 <span
                   key={tech}
@@ -541,18 +589,18 @@ export function Works() {
             </div>
 
             {/* Description */}
-            <p className="text-[#7986a8] text-xs leading-relaxed line-clamp-3 mb-4">
+            <p className="text-[#7986a8] text-xs leading-relaxed line-clamp-3 mb-4 relative z-10">
               {project.description}
             </p>
 
-            {/* Links - handles Read Paper and code repository URLs */}
-            <div className="flex gap-4 mt-auto">
+            <div className="flex gap-4 mt-auto pt-4 relative z-10">
               {project.links.map((link) => (
                 <a
                   key={link.label}
                   href={link.url}
                   target={link.url === "#" ? undefined : "_blank"}
                   rel={link.url === "#" ? undefined : "noopener noreferrer"}
+                  onClick={(e) => e.stopPropagation()}
                   className={`inline-flex items-center gap-1 font-mono text-[10px] transition-colors duration-300 ${
                     project.accent === "pink"
                       ? "text-[#e91e8c] hover:text-[#f0f0ff]"
@@ -568,6 +616,13 @@ export function Works() {
                 </a>
               ))}
             </div>
+            {/* View Details Label */}
+            <div className={`absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] ${
+              project.accent === "pink" ? "text-[#e91e8c]" : "text-[#a855f7]"
+            }`}>
+              View Details →
+            </div>
+            </Link>
           </motion.div>
         ))}
       </div>
@@ -597,6 +652,9 @@ export function Works() {
             )}
             {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Phishing") && (
               <PhishingDetectorIllustration />
+            )}
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("EcoTrack") && (
+              <EcoTrackIllustration />
             )}
             <div className="absolute inset-0 bg-[#e91e8c]/20 mix-blend-overlay" />
           </>
