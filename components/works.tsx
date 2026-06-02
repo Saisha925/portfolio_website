@@ -507,17 +507,17 @@ export function Works() {
                 {/* Links */}
                 <div className="flex gap-4">
                   {project.links.map((link) => (
-                    <a
+                    <span
                       key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-2 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
+                      role="link"
+                      tabIndex={0}
+                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(link.url, '_blank', 'noopener,noreferrer'); }}
+                      onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); window.open(link.url, '_blank', 'noopener,noreferrer'); } }}
+                      className="inline-flex items-center gap-2 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300 cursor-pointer"
                     >
                       {link.label.includes("Code") ? <FolderGit2 className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                       {link.label}
-                    </a>
+                    </span>
                   ))}
                 </div>
               </div>
@@ -595,13 +595,13 @@ export function Works() {
 
             <div className="flex gap-4 mt-auto pt-4 relative z-10">
               {project.links.map((link) => (
-                <a
+                <span
                   key={link.label}
-                  href={link.url}
-                  target={link.url === "#" ? undefined : "_blank"}
-                  rel={link.url === "#" ? undefined : "noopener noreferrer"}
-                  onClick={(e) => e.stopPropagation()}
-                  className={`inline-flex items-center gap-1 font-mono text-[10px] transition-colors duration-300 ${
+                  role="link"
+                  tabIndex={0}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); if (link.url !== '#') window.open(link.url, '_blank', 'noopener,noreferrer'); }}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (link.url !== '#') window.open(link.url, '_blank', 'noopener,noreferrer'); } }}
+                  className={`inline-flex items-center gap-1 font-mono text-[10px] transition-colors duration-300 cursor-pointer ${
                     project.accent === "pink"
                       ? "text-[#e91e8c] hover:text-[#f0f0ff]"
                       : "text-[#a855f7] hover:text-[#f0f0ff]"
@@ -613,7 +613,7 @@ export function Works() {
                     <ExternalLink className="w-3.5 h-3.5" />
                   )}
                   {link.label}
-                </a>
+                </span>
               ))}
             </div>
             {/* View Details Label */}

@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/navbar"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { ExternalLink, FolderGit2 } from "lucide-react"
 
@@ -53,6 +54,26 @@ export default function DeepfakeDetectionPage() {
               </a>
             </div>
           </div>
+
+          {/* Hero Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-16 relative rounded-xl overflow-hidden border border-[#a855f7]/20 group"
+          >
+            <div className="relative aspect-video">
+              <Image
+                src="/deepfake-hero.png"
+                alt="Deepfake Detection via rPPG Signals — AI Research Visualization"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06080f] via-[#06080f]/20 to-transparent" />
+              <div className="absolute inset-0 bg-[#a855f7]/5 mix-blend-overlay" />
+            </div>
+          </motion.div>
 
           <div className="mb-16">
             <h2 className="text-2xl font-medium mb-4 text-[#f0f0ff]">Overview</h2>
