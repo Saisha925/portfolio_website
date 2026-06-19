@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScroll } from "@/components/smooth-scroll"
+import { PlacementCopilotBrowserMockup } from "@/components/works"
 
 const agents = [
   { icon: <FileText className="w-6 h-6" />, name: "Resume Agent", desc: "PDF parsing, ATS scoring, AI-powered bullet rewrites" },
@@ -73,6 +74,15 @@ export default function PlacementCopilotPage() {
 
             <div>
               <a 
+                href="https://placement-copilot-sooty.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#e91e8c] text-white font-mono text-sm hover:bg-[#e91e8c]/80 transition-colors rounded-lg font-semibold mr-4"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Site ↗
+              </a>
+              <a 
                 href="https://github.com/Saisha925/placement-copilot" 
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -81,6 +91,12 @@ export default function PlacementCopilotPage() {
                 <Github className="w-4 h-4" />
                 GitHub ↗
               </a>
+            </div>
+
+            {/* Project Image */}
+            <div className="mt-12 h-64 md:h-[400px] w-full rounded-xl overflow-hidden border border-[#e91e8c]/30 shadow-[0_0_30px_rgba(233,30,140,0.15)] relative">
+              <PlacementCopilotBrowserMockup />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06080f] to-transparent pointer-events-none" />
             </div>
           </motion.div>
 

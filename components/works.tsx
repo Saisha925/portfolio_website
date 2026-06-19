@@ -218,6 +218,43 @@ function DeepfakeDetectionIllustration() {
   )
 }
 
+// Placement Copilot Mockup Component
+export function PlacementCopilotBrowserMockup() {
+  return (
+    <div className="w-full h-full rounded-lg overflow-hidden bg-[#06080f] border border-[#2a2a4e] flex flex-col font-sans relative">
+      <div className="bg-[#0d1117] px-4 py-3 flex items-center justify-between border-b border-[#2a2a4e]">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded text-blue-500">✧</div>
+          <div className="text-[#f0f0ff] text-sm font-semibold tracking-wide">Placement Copilot</div>
+        </div>
+        <div className="text-[#7986a8] text-xs font-mono px-3 py-1 border border-[#2a2a4e] rounded-full hover:bg-[#2a2a4e]/50 cursor-pointer transition-colors">Sign In</div>
+      </div>
+      <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#0a0a1a] to-[#06080f] overflow-hidden">
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-[#1a233a]/50 border border-[#2a3a5a] rounded-full">
+          <span className="text-blue-400 font-mono text-[8px] md:text-[9px] uppercase tracking-widest font-bold">✧ Next-Gen Placement Intelligence</span>
+        </div>
+        <h1 className="text-center text-3xl md:text-4xl font-extrabold text-[#f0f0ff] mb-4 leading-tight tracking-tight max-w-sm">
+          Your AI Architect for <br />Dream Offers.
+        </h1>
+        <p className="text-center text-[#7986a8] text-[10px] md:text-xs max-w-md mb-8 leading-relaxed px-4">
+          Stop guessing what recruiters want. Our multi-agent hive mind analyzes your resume, builds adaptive roadmaps, and grills you in mock interviews until you are undeniable.
+        </p>
+        <div className="flex items-center justify-center gap-4 w-full">
+          <div className="bg-white text-black px-4 py-2 rounded-full font-bold text-[10px] md:text-xs shadow-[0_0_20px_rgba(255,255,255,0.4)] flex items-center gap-2 cursor-pointer">
+            Launch Copilot <span className="text-lg leading-none">→</span>
+          </div>
+          <div className="text-[#f0f0ff] font-semibold text-[10px] md:text-xs hover:text-white cursor-pointer transition-colors">
+            Explore Features
+          </div>
+        </div>
+        
+        {/* Decorative blur effect similar to original screenshot */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-white/5 blur-[80px] pointer-events-none rounded-full" />
+      </div>
+    </div>
+  )
+}
+
 // Phishing Detector SVG Component
 function PhishingDetectorIllustration() {
   return (
@@ -340,6 +377,7 @@ const projects = [
     description: "A multi-agent AI platform that orchestrates 8 specialized agents to deliver personalised placement preparation — resume analysis, skill gap detection, 30/60/90 day plans, DSA tracking, and AI mock interviews.",
     image: "/placement-copilot.svg",
     links: [
+      { label: "View Live Site", url: "https://placement-copilot-sooty.vercel.app/" },
       { label: "View Details →", url: "/projects/placement-copilot" }
     ],
     accent: "pink",
@@ -449,34 +487,36 @@ export function Works() {
         <h2 className="font-sans text-3xl md:text-5xl font-light italic text-[#f0f0ff]">Selected Works</h2>
       </motion.div>
 
-      {/* Featured Project */}
-      {projects.filter(p => p.featured).map((project, index) => (
-        <motion.div
-          key={project.title}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <Link href={project.href!} className="block relative p-8 bg-[#0d1117] border border-[#e91e8c]/30 rounded-2xl overflow-hidden group hover:border-[#e91e8c] hover:shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-all duration-500 glow-pink">
-            {/* Featured Badge */}
-            <div className="absolute top-4 right-4 px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-xs rounded-full">
-              Featured
-            </div>
+      {/* Featured Projects Bento Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        {projects.filter(p => p.featured).map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+            className="flex"
+          >
+            <Link href={project.href!} className="block relative p-6 bg-[#0d1117] border border-[#e91e8c]/30 rounded-2xl overflow-hidden group hover:border-[#e91e8c] hover:shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-all duration-500 glow-pink flex flex-col w-full h-full">
+              {/* Featured Badge */}
+              <div className="absolute top-4 right-4 flex gap-2 z-10">
+                {project.status && (
+                  <div className="px-3 py-1 bg-[#e91e8c]/20 border border-[#e91e8c]/50 text-[#e91e8c] font-mono text-[10px] rounded-full flex items-center">
+                    {project.status}
+                  </div>
+                )}
+                <div className="px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-[10px] rounded-full">
+                  Featured
+                </div>
+              </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Image */}
-              <a
-                href="https://path2zero.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative h-64 lg:h-80 rounded-lg overflow-hidden cursor-pointer"
-              >
-                <Path2ZeroBrowserMockup />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06080f]/80 to-transparent" />
-                <div className="absolute inset-0 bg-[#e91e8c]/10 mix-blend-overlay" />
-
+              {/* Image Container (Top) */}
+              <div className="relative h-64 md:h-72 w-full rounded-lg overflow-hidden mb-6 mt-6 cursor-pointer flex-shrink-0">
+                {project.title.includes("Placement Copilot") ? <PlacementCopilotBrowserMockup /> : <Path2ZeroBrowserMockup />}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-[#e91e8c]/5 mix-blend-overlay pointer-events-none" />
+                
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex items-center gap-2 px-4 py-2 bg-[#e91e8c] text-[#06080f] font-mono text-sm font-semibold rounded-lg">
@@ -484,12 +524,12 @@ export function Works() {
                     <span>View Project</span>
                   </div>
                 </div>
-              </a>
+              </div>
 
-              {/* Content */}
-              <div className="flex flex-col justify-center relative z-10">
+              {/* Content Container (Bottom) */}
+              <div className="flex flex-col flex-grow relative z-10">
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -501,16 +541,16 @@ export function Works() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-sans text-2xl md:text-3xl font-medium text-[#f0f0ff] mb-4 leading-tight">
+                <h3 className="font-sans text-xl md:text-2xl font-medium text-[#f0f0ff] mb-3 leading-tight">
                   {project.title}
                 </h3>
 
                 {/* Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="font-mono text-[10px] tracking-wider px-2 py-1 bg-[#e91e8c]/10 rounded text-[#7986a8]"
+                      className="font-mono text-[9px] tracking-wider px-2 py-1 bg-[#e91e8c]/10 rounded text-[#7986a8]"
                     >
                       {tech}
                     </span>
@@ -518,19 +558,28 @@ export function Works() {
                 </div>
 
                 {/* Description */}
-                <p className="text-[#7986a8] text-sm leading-relaxed mb-6">
+                <p className="text-[#7986a8] text-sm leading-relaxed mb-6 flex-grow">
                   {project.description}
                 </p>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4 mt-auto">
                   {project.links.map((link) => (
                     <a
                       key={link.label}
                       href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
+                      target={link.url.startsWith("/") ? "_self" : "_blank"}
+                      rel={link.url.startsWith("/") ? "" : "noopener noreferrer"}
+                      className="inline-flex items-center gap-2 font-mono text-[11px] text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
+                      onClick={(e) => { 
+                         if (link.url.startsWith("/")) {
+                             e.preventDefault(); 
+                             e.stopPropagation(); 
+                             window.location.href = link.url; 
+                         } else {
+                             e.stopPropagation();
+                         }
+                      }}
                     >
                       {link.label.includes("Code") ? <FolderGit2 className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                       {link.label}
@@ -538,12 +587,13 @@ export function Works() {
                   ))}
                 </div>
               </div>
-            </div>
-            {/* View Details Label */}
-            <div className="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] text-[#e91e8c]">View Details →</div>
-          </Link>
-        </motion.div>
-      ))}
+              
+              {/* View Details Label */}
+              <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] text-[#e91e8c]">View Details →</div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
 
       {/* Other Projects Grid */}
       <div ref={containerRef} onMouseMove={handleMouseMove} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
