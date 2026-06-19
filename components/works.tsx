@@ -486,31 +486,30 @@ export function Works() {
         <h2 className="font-sans text-3xl md:text-5xl font-light italic text-[#f0f0ff]">Selected Works</h2>
       </motion.div>
 
-      {/* Featured Project */}
-      {projects.filter(p => p.featured).map((project, index) => (
-        <motion.div
-          key={project.title}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <Link href={project.href!} className="block relative p-8 bg-[#0d1117] border border-[#e91e8c]/30 rounded-2xl overflow-hidden group hover:border-[#e91e8c] hover:shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-all duration-500 glow-pink">
-            {/* Featured Badge */}
-            <div className="absolute top-4 right-4 px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-xs rounded-full">
-              Featured
-            </div>
+      {/* Featured Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {projects.filter(p => p.featured).map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+            className="flex"
+          >
+            <Link href={project.href!} className={`block relative p-8 bg-[#0d1117] border border-[${project.accent === 'pink' ? '#e91e8c' : project.accent === 'purple' ? '#a855f7' : '#00f0ff'}]/30 rounded-2xl overflow-hidden group hover:border-[${project.accent === 'pink' ? '#e91e8c' : project.accent === 'purple' ? '#a855f7' : '#00f0ff'}] hover:shadow-[0_0_20px_rgba(233,30,140,0.4)] transition-all duration-500 glow-pink flex flex-col w-full h-full`}>
+              {/* Featured Badge */}
+              <div className="absolute top-4 right-4 px-3 py-1 bg-[#e91e8c] text-[#06080f] font-mono text-xs rounded-full z-20">
+                Featured
+              </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Image */}
-              <a
-                href="https://path2zero.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative h-64 lg:h-80 rounded-lg overflow-hidden cursor-pointer"
-              >
-                <Path2ZeroBrowserMockup />
+              {/* Image Section */}
+              <div className="group relative h-48 lg:h-64 rounded-lg overflow-hidden mb-6 shrink-0 z-10">
+                {project.title.includes("Placement Copilot") ? (
+                  <PlacementCopilotBrowserMockup />
+                ) : (
+                  <Path2ZeroBrowserMockup />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#06080f]/80 to-transparent" />
                 <div className="absolute inset-0 bg-[#e91e8c]/10 mix-blend-overlay" />
 
@@ -521,10 +520,10 @@ export function Works() {
                     <span>View Project</span>
                   </div>
                 </div>
-              </a>
+              </div>
 
-              {/* Content */}
-              <div className="flex flex-col justify-center relative z-10">
+              {/* Content Section */}
+              <div className="flex flex-col flex-1 relative z-10">
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
@@ -538,7 +537,7 @@ export function Works() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-sans text-2xl md:text-3xl font-medium text-[#f0f0ff] mb-4 leading-tight">
+                <h3 className="font-sans text-2xl lg:text-3xl font-medium text-[#f0f0ff] mb-4 leading-tight">
                   {project.title}
                 </h3>
 
@@ -555,32 +554,36 @@ export function Works() {
                 </div>
 
                 {/* Description */}
-                <p className="text-[#7986a8] text-sm leading-relaxed mb-6">
+                <p className="text-[#7986a8] text-sm leading-relaxed mb-6 flex-1">
                   {project.description}
                 </p>
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-auto">
                   {project.links.map((link) => (
-                    <a
+                    <span
                       key={link.label}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 font-mono text-xs text-[#e91e8c] hover:text-[#f0f0ff] transition-colors duration-300"
+                      onClick={(e) => {
+                        if (link.label.includes("Live Site") || link.label.includes("Project")) {
+                          e.preventDefault()
+                          window.open(link.url, "_blank", "noopener noreferrer")
+                        }
+                      }}
                     >
                       {link.label.includes("Code") ? <FolderGit2 className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                       {link.label}
-                    </a>
+                    </span>
                   ))}
                 </div>
               </div>
-            </div>
-            {/* View Details Label */}
-            <div className="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] text-[#e91e8c]">View Details →</div>
-          </Link>
-        </motion.div>
-      ))}
+
+              {/* View Details Label */}
+              <div className="absolute bottom-4 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-mono text-[10px] text-[#e91e8c]">View Details →</div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
 
       {/* Other Projects Grid */}
       <div ref={containerRef} onMouseMove={handleMouseMove} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
