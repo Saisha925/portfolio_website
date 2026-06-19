@@ -218,6 +218,43 @@ function DeepfakeDetectionIllustration() {
   )
 }
 
+// Placement Copilot Mockup Component
+export function PlacementCopilotBrowserMockup() {
+  return (
+    <div className="w-full h-full rounded-lg overflow-hidden bg-[#06080f] border border-[#2a2a4e] flex flex-col font-sans relative">
+      <div className="bg-[#0d1117] px-4 py-3 flex items-center justify-between border-b border-[#2a2a4e]">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded text-blue-500">✧</div>
+          <div className="text-[#f0f0ff] text-sm font-semibold tracking-wide">Placement Copilot</div>
+        </div>
+        <div className="text-[#7986a8] text-xs font-mono px-3 py-1 border border-[#2a2a4e] rounded-full hover:bg-[#2a2a4e]/50 cursor-pointer transition-colors">Sign In</div>
+      </div>
+      <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#0a0a1a] to-[#06080f] overflow-hidden">
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-[#1a233a]/50 border border-[#2a3a5a] rounded-full">
+          <span className="text-blue-400 font-mono text-[8px] md:text-[9px] uppercase tracking-widest font-bold">✧ Next-Gen Placement Intelligence</span>
+        </div>
+        <h1 className="text-center text-3xl md:text-4xl font-extrabold text-[#f0f0ff] mb-4 leading-tight tracking-tight max-w-sm">
+          Your AI Architect for <br />Dream Offers.
+        </h1>
+        <p className="text-center text-[#7986a8] text-[10px] md:text-xs max-w-md mb-8 leading-relaxed px-4">
+          Stop guessing what recruiters want. Our multi-agent hive mind analyzes your resume, builds adaptive roadmaps, and grills you in mock interviews until you are undeniable.
+        </p>
+        <div className="flex items-center justify-center gap-4 w-full">
+          <div className="bg-white text-black px-4 py-2 rounded-full font-bold text-[10px] md:text-xs shadow-[0_0_20px_rgba(255,255,255,0.4)] flex items-center gap-2 cursor-pointer">
+            Launch Copilot <span className="text-lg leading-none">→</span>
+          </div>
+          <div className="text-[#f0f0ff] font-semibold text-[10px] md:text-xs hover:text-white cursor-pointer transition-colors">
+            Explore Features
+          </div>
+        </div>
+        
+        {/* Decorative blur effect similar to original screenshot */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-white/5 blur-[80px] pointer-events-none rounded-full" />
+      </div>
+    </div>
+  )
+}
+
 // Phishing Detector SVG Component
 function PhishingDetectorIllustration() {
   return (
