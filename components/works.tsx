@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 import { ExternalLink, FolderGit2 } from "lucide-react"
+import Link from "next/link"
 
 // Path2Zero Browser Mockup Component
 function Path2ZeroBrowserMockup() {
@@ -343,7 +344,8 @@ const projects = [
     ],
     accent: "pink",
     featured: true,
-    status: "In Progress 🚧"
+    status: "In Progress 🚧",
+    href: "/projects/placement-copilot"
   },
   {
     title: "Path2Zero — Carbon Credit Marketplace",
@@ -356,6 +358,7 @@ const projects = [
     ],
     accent: "pink",
     featured: true,
+    href: "/projects/path2zero"
   },
   {
     title: "Deepfake Detection via rPPG Signals & XceptionNet",
