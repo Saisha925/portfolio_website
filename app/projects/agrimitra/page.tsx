@@ -50,9 +50,7 @@ export default function AgriMitraPage() {
           >
             {/* Badges & Tags */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="font-mono text-xs px-3 py-1 bg-[#a855f7]/10 border border-[#a855f7]/30 text-[#a855f7] rounded-full">
-                Hackathon Project 🏆
-              </span>
+
               <span className="font-mono text-xs px-3 py-1 border border-[#a855f7] text-[#a855f7] rounded-full">
                 Solo Project
               </span>

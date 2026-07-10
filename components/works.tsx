@@ -385,18 +385,6 @@ const projects = [
     href: "/projects/placement-copilot"
   },
   {
-    title: "AgriMitra AI",
-    tags: ["Google ADK", "Multi-Agent", "RAG", "Multilingual"],
-    stack: ["Google ADK 2.0", "FastMCP", "Qdrant", "Python 3.12"],
-    description: "A multilingual AI agricultural advisor for Indian farmers — built with Google ADK 2.0, 5 specialist agents, MCP integrations, and Qdrant RAG. Supports Hindi, Marathi, Punjabi, and Bhojpuri.",
-    image: "/agrimitra-illustration.svg",
-    links: [],
-    accent: "purple",
-    featured: false,
-    status: "Hackathon Project 🏆",
-    href: "/projects/agrimitra"
-  },
-  {
     title: "Path2Zero — Carbon Credit Marketplace",
     tags: ["Full Stack", "AI", "Feb 2026"],
     stack: ["AI Agents", "Payment Gateway", "ESG Reports", "Chatbot"],
@@ -408,6 +396,19 @@ const projects = [
     accent: "pink",
     featured: true,
     href: "/projects/path2zero"
+  },
+  {
+    title: "AgriMitra AI",
+    tags: ["Google ADK", "Multi-Agent", "RAG", "Multilingual"],
+    stack: ["Google ADK 2.0", "FastMCP", "Qdrant", "Python 3.12"],
+    description: "A multilingual AI agricultural advisor for Indian farmers — built with Google ADK 2.0, 5 specialist agents, MCP integrations, and Qdrant RAG. Supports Hindi, Marathi, Punjabi, and Bhojpuri.",
+    image: "/agrimitra-illustration.svg",
+    links: [
+      { label: "View Code", url: "https://www.kaggle.com/code/saishabhasin9/agrimitraai" }
+    ],
+    accent: "purple",
+    featured: false,
+    href: "/projects/agrimitra"
   },
   {
     title: "Deepfake Detection via rPPG Signals & XceptionNet",
