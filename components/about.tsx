@@ -71,7 +71,7 @@ export function About() {
                 <p className="font-mono text-xs text-[#7986a8]">2023 — Present</p>
                 <div className="mt-3 inline-flex items-center gap-2 px-3 py-1 bg-[#e91e8c]/10 rounded-full">
                   <Award className="w-4 h-4 text-[#e91e8c]" />
-                  <span className="font-mono text-sm text-[#e91e8c]">CGPA: 9.08</span>
+                  <span className="font-mono text-sm text-[#e91e8c]">CGPA: 9.15</span>
                 </div>
               </div>
             </div>

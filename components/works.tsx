@@ -385,6 +385,18 @@ const projects = [
     href: "/projects/placement-copilot"
   },
   {
+    title: "AgriMitra AI",
+    tags: ["Google ADK", "Multi-Agent", "RAG", "Multilingual"],
+    stack: ["Google ADK 2.0", "FastMCP", "Qdrant", "Python 3.12"],
+    description: "A multilingual AI agricultural advisor for Indian farmers — built with Google ADK 2.0, 5 specialist agents, MCP integrations, and Qdrant RAG. Supports Hindi, Marathi, Punjabi, and Bhojpuri.",
+    image: "/agrimitra-illustration.svg",
+    links: [],
+    accent: "purple",
+    featured: false,
+    status: "Hackathon Project 🏆",
+    href: "/projects/agrimitra"
+  },
+  {
     title: "Path2Zero — Carbon Credit Marketplace",
     tags: ["Full Stack", "AI", "Feb 2026"],
     stack: ["AI Agents", "Payment Gateway", "ESG Reports", "Chatbot"],
@@ -603,6 +615,7 @@ export function Works() {
               }`}>
               {/* Image */}
               <div className="relative h-40 rounded-lg overflow-hidden mb-4">
+                {project.title.includes("AgriMitra") && <img src="/agrimitra-illustration.svg" alt="AgriMitra AI" className="w-full h-full object-cover" />}
                 {project.title.includes("SentrySense") && <SentrySenseDashboard />}
                 {project.title.includes("Deepfake") && <DeepfakeDetectionIllustration />}
                 {project.title.includes("Phishing") && <PhishingDetectorIllustration />}
@@ -697,6 +710,9 @@ export function Works() {
       >
         {hoveredIndex !== null && (
           <>
+            {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("AgriMitra") && (
+              <img src="/agrimitra-illustration.svg" alt="AgriMitra AI" className="w-full h-full object-cover" />
+            )}
             {projects.filter(p => !p.featured)[hoveredIndex]?.title.includes("Path2Zero") && (
               <Path2ZeroBrowserMockup />
             )}

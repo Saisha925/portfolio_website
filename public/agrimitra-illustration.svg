@@ -1,0 +1,113 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow-agri">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="brain-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#e91e8c" />
+      <stop offset="100%" stopColor="#a855f7" />
+    </linearGradient>
+    <linearGradient id="crop-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#a855f7" stopOpacity="0.4" />
+      <stop offset="100%" stopColor="#0a0a1a" stopOpacity="0.9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="#06080f" />
+
+  <!-- Background Grid -->
+  <g stroke="#a855f7" strokeOpacity="0.05" strokeWidth="1">
+    <!-- Vertical -->
+    <line x1="100" y1="0" x2="100" y2="450" />
+    <line x1="200" y1="0" x2="200" y2="450" />
+    <line x1="300" y1="0" x2="300" y2="450" />
+    <line x1="400" y1="0" x2="400" y2="450" />
+    <line x1="500" y1="0" x2="500" y2="450" />
+    <line x1="600" y1="0" x2="600" y2="450" />
+    <line x1="700" y1="0" x2="700" y2="450" />
+    <!-- Horizontal -->
+    <line x1="0" y1="50" x2="800" y2="50" />
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="150" x2="800" y2="150" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="250" x2="800" y2="250" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+  </g>
+
+  <!-- Connecting Lines -->
+  <g stroke="#a855f7" strokeWidth="2" strokeOpacity="0.4" filter="url(#glow-agri)">
+    <path d="M400 225 L250 120" strokeDasharray="5,5" />
+    <path d="M400 225 L550 120" strokeDasharray="5,5" />
+    <path d="M400 225 L180 260" strokeDasharray="5,5" />
+    <path d="M400 225 L620 260" strokeDasharray="5,5" />
+    <path d="M400 225 L400 80" strokeDasharray="5,5" />
+  </g>
+
+  <!-- Stylized Wheat/Crop Field Silhouette at the bottom -->
+  <path d="M0 450 Q 100 380 200 420 T 400 380 T 600 420 T 800 390 L800 450 Z" fill="url(#crop-grad)" />
+  <path d="M0 450 Q 150 400 250 430 T 450 400 T 650 440 T 800 410 L800 450 Z" fill="#06080f" fillOpacity="0.5" />
+  <!-- Wheat stalks -->
+  <g stroke="#a855f7" strokeWidth="2" strokeOpacity="0.2" fill="none" strokeLinecap="round">
+    <path d="M100 450 Q 110 420 105 390" />
+    <path d="M250 450 Q 240 400 255 360" />
+    <path d="M400 450 Q 390 390 405 340" />
+    <path d="M550 450 Q 560 410 545 370" />
+    <path d="M700 450 Q 690 430 710 400" />
+  </g>
+
+  <!-- Center AI Brain / Network Node -->
+  <g transform="translate(400, 225)">
+    <!-- Outer Rings -->
+    <circle r="60" fill="none" stroke="#e91e8c" strokeWidth="1" strokeOpacity="0.2" />
+    <circle r="45" fill="none" stroke="#a855f7" strokeWidth="2" strokeOpacity="0.5" strokeDasharray="8,4" />
+    <circle r="30" fill="url(#brain-grad)" filter="url(#glow-agri)" />
+    <!-- Brain/Node Lines -->
+    <path d="M-15 -10 L0 -20 L15 -10 L15 10 L0 20 L-15 10 Z" fill="none" stroke="#06080f" strokeWidth="2" />
+    <circle cx="0" cy="0" r="4" fill="#06080f" />
+  </g>
+
+  <!-- Icons around the center -->
+  <!-- 1. Chat Bubble (Multilingual Support) - Top Left -->
+  <g transform="translate(250, 120)">
+    <circle r="25" fill="#0a0a1a" stroke="#e91e8c" strokeWidth="2" />
+    <path d="M-8 -6 H8 M-8 0 H8 M-8 6 H4" stroke="#e91e8c" strokeWidth="2" strokeLinecap="round" />
+    <path d="M-12 -12 H12 A4 4 0 0 1 16 -8 V8 A4 4 0 0 1 12 12 H-4 L-12 18 V12 H-12 A4 4 0 0 1 -16 8 V-8 A4 4 0 0 1 -12 -12 Z" fill="none" stroke="#e91e8c" strokeWidth="2" strokeLinejoin="round" />
+  </g>
+
+  <!-- 2. Leaf (Crop Health) - Top Right -->
+  <g transform="translate(550, 120)">
+    <circle r="25" fill="#0a0a1a" stroke="#a855f7" strokeWidth="2" />
+    <path d="M-10 10 Q -15 -10 10 -10 Q 15 10 -10 10 Z" fill="none" stroke="#a855f7" strokeWidth="2" />
+    <path d="M-10 10 L5 -5" fill="none" stroke="#a855f7" strokeWidth="2" />
+  </g>
+
+  <!-- 3. Cloud with Rain (Weather) - Bottom Left -->
+  <g transform="translate(180, 260)">
+    <circle r="25" fill="#0a0a1a" stroke="#a855f7" strokeWidth="2" />
+    <path d="M-5 -2 A6 6 0 0 1 5 -2 A5 5 0 0 1 5 8 H-5 A5 5 0 0 1 -5 -2 Z" fill="none" stroke="#a855f7" strokeWidth="2" />
+    <line x1="-4" y1="12" x2="-6" y2="16" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+    <line x1="0" y1="12" x2="-2" y2="16" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+    <line x1="4" y1="12" x2="2" y2="16" stroke="#a855f7" strokeWidth="2" strokeLinecap="round" />
+  </g>
+
+  <!-- 4. Shield (Security) - Bottom Right -->
+  <g transform="translate(620, 260)">
+    <circle r="25" fill="#0a0a1a" stroke="#e91e8c" strokeWidth="2" />
+    <path d="M-10 -8 L0 -12 L10 -8 V2 C10 10 0 14 0 14 C0 14 -10 10 -10 2 Z" fill="none" stroke="#e91e8c" strokeWidth="2" strokeLinejoin="round" />
+    <path d="M-4 -2 L-1 2 L5 -4" fill="none" stroke="#e91e8c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </g>
+
+  <!-- 5. Map Pin (Location) - Top Center -->
+  <g transform="translate(400, 80)">
+    <circle r="25" fill="#0a0a1a" stroke="#a855f7" strokeWidth="2" />
+    <path d="M-8 -4 A8 8 0 1 1 8 -4 C8 2 0 12 0 12 C0 12 -8 2 -8 -4 Z" fill="none" stroke="#a855f7" strokeWidth="2" strokeLinejoin="round" />
+    <circle cx="0" cy="-4" r="3" fill="none" stroke="#a855f7" strokeWidth="2" />
+  </g>
+</svg>
